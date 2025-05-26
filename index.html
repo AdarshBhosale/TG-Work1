@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Games</title>
+
+    <!-- Fonts and Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: url("assets/images/bg.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        /* existing properties */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 35px;
+        border-bottom: 1px solid #222;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      footer {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        margin-top: 70px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #aaa;
+        border-top: 1px solid #222;
+      }
+
+      /* ───── BADGE STYLES FROM OLD INDEX ───── */
+
+      /* Green "✓ Added" badge on game cards */
+      .badge-added {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: #28a745;
+        color: white;
+        padding: 4px 10px;
+        font-size: 0.75rem;
+        border-radius: 12px;
+        font-weight: 600;
+        z-index: 9;
+      }
+
+      /* Positioning for cart icon badge */
+      .cart-li {
+        position: relative;
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      /* Cart icon badge (red circle with number) */
+      .cart-li .badge,
+      .badge {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: #ff4e6b;
+        color: #fff;
+        font-size: 0.7rem;
+        line-height: 1;
+        padding: 2px 5px;
+        border-radius: 50%;
+      }
+
+      /* Hover effect for cart icon */
+      .cart-li > a:hover {
+        background-color: transparent;
+        transform: scale(1.08);
+      }
+
+      .cart-li > a:hover .fa-shopping-cart {
+        color: #ffffff;
+        transition: color 0.3s ease, transform 0.3s ease;
+        transform: scale(1.15);
+      }
+
+      .navbar img.logo {
+        height: 60px;
+      }
+
+      .navbar .cart-icon {
+        font-size: 26px;
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      .navbar .cart-icon:hover {
+        color: #ff00b8;
+        transform: scale(1.2);
+      }
+
+      /* HEADING */
+      .heading-img {
+        width: 90%;
+        max-width: 600px;
+        margin: 30px auto 40px;
+        display: block;
+        animation: floatIn 1s ease-out;
+      }
+
+      /* GAME GRID */
+      .game-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        animation: fadeIn 1s ease-in;
+      }
+
+      .game-card {
+        position: relative; /* ← new */
+        background: linear-gradient(145deg, #1a003c, #2a005d);
+        border: 2px solid #4d1f3f;
+        border-radius: 20px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.4s, box-shadow 0.4s;
+      }
+
+      .game-card:hover {
+        transform: scale(1.06);
+        box-shadow: 0 0 30px #ff00b8;
+      }
+
+      .game-card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .game-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 10px 0 0;
+      }
+
+      .explore-btn {
+        display: inline-block;
+        margin: 10px 0 20px;
+        background: url("assets/images/explore-btn.png") no-repeat center center;
+        background-size: contain;
+        width: 120px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        text-indent: -9999px;
+        transition: transform 0.3s, filter 0.3s;
+      }
+
+      .explore-btn:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 5px #f0f);
+      }
+
+      .scroll-indicator {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ffffff;
+        color: #007bff;
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+      }
+      .scroll-indicator:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .scroll-indicator i {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      /* ANIMATIONS */
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* FOOTER */
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 12px 16px;
+        }
+
+        .navbar img.logo {
+          height: 50px;
+        }
+
+        .heading-img {
+          max-width: 90%;
+        }
+
+        .game-title {
+          font-size: 1rem;
+        }
+
+        .explore-btn {
+          width: 100px;
+          height: 36px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar img.logo {
+          width: 140px;
+          height: 60px;
+        }
+        .cart-icon {
+          font-size: 24px;
+          color: #fff;
+          transition: transform 0.3s, color 0.3s;
+        }
+
+        .heading-img {
+          margin-top: 20px;
+        }
+
+        footer {
+          font-size: 0.9rem;
+        }
+        .game-grid {
+          justify-items: center; /* horizontally centers every direct child */
+        }
+        .game-card {
+          justify-self: center;
+          margin: 0 auto;
+          align-content: center;
+          width: 315px;
+          align-items: center;
+          background: linear-gradient(145deg, #1a003c, #2a005d);
+          border: 2px solid #4d1f3f;
+          border-radius: 20px;
+          overflow: hidden;
+          text-align: center;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.4s, box-shadow 0.4s;
+          margin-top: 15px;
+        }
+        .navbar {
+          background: url(assets/images/nav-foot-bg.png) no-repeat center center;
+          background-size: cover;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 20px;
+          border-bottom: 1px solid #222;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <span class="badge-added d-none">✓ Added</span>
+
+    <!-- SCROLL INDICATOR -->
+    <div
+      id="scroll-indicator"
+      class="scroll-indicator"
+      onclick="toggleScroll()"
+      title="Scroll for more"
+    >
+      <i id="scroll-icon" class="fas fa-chevron-down"></i>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+      <div class="cart-li">
+        <a href="cart.html" class="nav-link">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span id="cart-count" class="badge">0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- HEADING -->
+    <img
+      src="assets/images/exp.png"
+      alt="Explore Our Learning Games"
+      class="heading-img"
+    />
+
+    <!-- GAME GRID -->
+    <div class="game-grid">
+      <!-- Repeat for all games -->
+      <div class="game-card">
+        <img src="assets/images/trending-01.png" alt="Skill Slice" />
+        <div class="game-title">Skill Slice</div>
+        <a href="product-details.html?game=skillslice" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-02.png" alt="Island Conqueror" />
+        <div class="game-title">Island Conqueror</div>
+        <a href="product-details.html?game=islandconqueror" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-03.png" alt="Color Strike" />
+        <div class="game-title">Color Strike</div>
+        <a href="product-details.html?game=colorstrike" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-04.png" alt="Skill Arcade" />
+        <div class="game-title">Skill Arcade</div>
+        <a href="product-details.html?game=skillarcade" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-05.png" alt="KK Konnect" />
+        <div class="game-title">KK Konnect</div>
+        <a href="product-details.html?game=knowledgekonnect" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-06.png" alt="Ball Pong" />
+        <div class="game-title">Ball Pong</div>
+        <a href="product-details.html?game=ballpong" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-07.png" alt="Collect The Coin" />
+        <div class="game-title">Collect The Coin</div>
+        <a href="product-details.html?game=coincollect" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-08.png" alt="Treasure Hunt" />
+        <div class="game-title">Treasure Hunt</div>
+        <a href="product-details.html?game=treasurehunt" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-09.png" alt="Space Shooter" />
+        <div class="game-title">Space Shooter</div>
+        <a href="product-details.html?game=spaceshooter" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+
+      <div class="game-card">
+        <img src="assets/images/trending-10.png" alt="Spin The Wheel" />
+        <div class="game-title">Spin The Wheel</div>
+        <a href="product-details.html?game=spinthewheel" class="explore-btn"
+          >Explore</a
+        >
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      Copyright © 2025 Thinking Grey<br />
+      Design By Thinking Grey
+    </footer>
+
+    <script>
+      function toggleScroll() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.body.offsetHeight;
+
+        if (scrollY + windowHeight >= docHeight - 50) {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          window.scrollBy({ top: windowHeight * 0.5, behavior: "smooth" });
+        }
+      }
+
+      window.addEventListener("scroll", () => {
+        const icon = document.getElementById("scroll-icon");
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.body.offsetHeight;
+
+        if (scrollY <= 10) {
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        } else if (scrollY + windowHeight >= docHeight - 10) {
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        } else {
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        window.dispatchEvent(new Event("scroll"));
+      });
+
+      function getCart() {
+        try {
+          return JSON.parse(localStorage.getItem("tg_cart")) || [];
+        } catch {
+          return [];
+        }
+      }
+
+      function updateCartBadge() {
+        const badge = document.getElementById("cart-count");
+        const cart = getCart();
+        badge.textContent = cart.length;
+        badge.style.display = cart.length > 0 ? "inline-block" : "none";
+      }
+
+      function updateCardBadges() {
+        const cart = getCart(); // current cart
+        document.querySelectorAll(".game-card").forEach((card) => {
+          // 1. ensure a badge element exists inside the card
+          let badge = card.querySelector(".badge-added");
+          if (!badge) {
+            badge = document.createElement("span");
+            badge.className = "badge-added";
+            badge.textContent = "✓ Added";
+            card.appendChild(badge);
+          }
+
+          // 2. compare game title with cart & toggle visibility
+          const title = card.querySelector(".game-title").textContent.trim();
+          badge.style.display = cart.includes(title)
+            ? "inline-block" // show if in cart
+            : "none"; // hide otherwise
+        });
+      }
+
+      /* ---------- initial load ---------- */
+      document.addEventListener("DOMContentLoaded", () => {
+        updateCartBadge(); // you already had this
+        updateCardBadges(); // now also refresh badges
+      });
+
+      /* ---------- live sync across tabs ---------- */
+      window.addEventListener("storage", (e) => {
+        if (e.key === "tg_cart") {
+          updateCartBadge();
+          updateCardBadges();
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        updateCartBadge();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Product Detail – TG Gaming</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <style>
+      body {
+        background: url("assets/images/bg.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 35px;
+        border-bottom: 1px solid #222;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .nav-actions .nav-link {
+        color: white;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .cart-icon {
+        font-size: 24px;
+        color: #fff;
+        transition: transform 0.3s, color 0.3s;
+      }
+      .badge {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: #ff4e6b;
+        color: #fff;
+        font-size: 0.7rem;
+        line-height: 1;
+        padding: 2px 5px;
+        border-radius: 50%;
+      }
+      .single-product.section {
+        padding-top: 70px !important;
+        margin-top: -10px !important;
+      }
+      /* ──────────────────────────────────────────────────────────────
+      COMMON SHARED RULES
+      Every button-image gets these base styles first
+      ────────────────────────────────────────────────────────────── */
+      .button-img {
+        width: 240px; /* default desktop size */
+        height: 75px;
+        border-radius: 38px; /* pill ends match artwork */
+        display: block; /* makes the <a>/<button> clickable everywhere */
+        transition: transform 0.25s ease, filter 0.25s ease;
+      }
+
+      /* scale up & brighten on hover / focus */
+      .btn-group-custom a:hover .button-img,
+      .btn-group-custom a:focus .button-img,
+      #cart-btn:hover .button-img,
+      #cart-btn:focus .button-img {
+        transform: translateY(-3px) scale(1.05);
+      }
+
+      /* ──────────────────────────────────────────────────────────────
+      1. CUSTOMISE  (#btn-customise)
+      ────────────────────────────────────────────────────────────── */
+
+      #btn-customise .button-img {
+        /* magenta glow */
+        filter: drop-shadow(0 4px 18px rgba(226, 0, 255, 0.35));
+      }
+      #btn-customise:hover .button-img,
+      #btn-customise:focus .button-img {
+        filter: drop-shadow(0 6px 28px rgba(226, 0, 255, 0.8));
+      }
+
+      /* ──────────────────────────────────────────────────────────────
+      2. TRY DEMO  (#btn-demo)
+      ────────────────────────────────────────────────────────────── */
+
+      #btn-demo .button-img {
+        /* cyan glow */
+        filter: drop-shadow(0 4px 18px rgba(0, 255, 255, 0.35));
+      }
+      #btn-demo:hover .button-img,
+      #btn-demo:focus .button-img {
+        filter: drop-shadow(0 6px 28px rgba(0, 255, 255, 0.8));
+      }
+
+      /* ──────────────────────────────────────────────────────────────
+      3. I’M INTERESTED / ADD TO CART  (#cart-btn > img)
+      ────────────────────────────────────────────────────────────── */
+
+      #cart-btn .button-img {
+        /* yellow-orange glow */
+        filter: drop-shadow(0 4px 18px rgba(255, 200, 0, 0.35));
+      }
+      #cart-btn:hover .button-img,
+      #cart-btn:focus .button-img {
+        filter: drop-shadow(0 6px 28px rgba(255, 200, 0, 0.8));
+      }
+
+      #btn-customise .button-img {
+        width: 215px;
+        height: 60px;
+        margin: 0px 0px 0px 0px;
+      }
+
+      #btn-demo .button-img {
+        width: 170px;
+        height: 60px;
+        margin: 0px 0px 0px 0px;
+      }
+      #cart-btn .button-img {
+        width: 215px;
+        height: 60px;
+        margin: 0px 0px 0px 0px;
+      }
+
+      /* ──────────────────────────────────────────────────────────────
+      RESPONSIVE  – shrink buttons on small screens
+      ────────────────────────────────────────────────────────────── */
+      @media (max-width: 576px) {
+        .button-img {
+          width: 190px; /* ~20 % smaller */
+          height: 60px;
+          border-radius: 30px;
+        }
+      }
+
+      footer {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        margin-top: 70px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #aaa;
+        text-align: center;
+        border-top: 1px solid #222;
+      }
+      .navbar img.logo {
+        width: 140px;
+        height: 60px;
+      }
+
+      @media (max-width: 428px) {
+        .navbar {
+          background: url(assets/images/nav-foot-bg.png) no-repeat center center;
+          background-size: cover;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 15px;
+          border-bottom: 1px solid #222;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+        }
+        .badge {
+          position: absolute;
+          top: 25px;
+          right: 8px;
+          background: #ff4e6b;
+          color: #fff;
+          font-size: 0.7rem;
+          line-height: 1;
+          padding: 2px 5px;
+          border-radius: 50%;
+        }
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        #btn-customise .button-img {
+          width: 150px;
+          height: 40px;
+        }
+        #btn-demo .button-img {
+          width: 115px;
+          height: 40px;
+        }
+        #cart-btn .button-img {
+          width: 180px;
+          height: 40px;
+        }
+        /* center the three image buttons inside their flex wrapper */
+        .btn-group-custom {
+          justify-content: center; /* ⬅︎ main-axis -> horizontal centering  */
+          align-items: center; /* optional: cross-axis -> vertical centering */
+        }
+        .my-3 {
+          margin-top: 1rem !important;
+          margin-bottom: 1rem !important;
+          margin: 5px;
+        }
+        .single-product ul li {
+          display: block;
+          margin: 10px 0px;
+          font-size: 16px;
+          color: #0071f8;
+          margin: 5px;
+        }
+        .fw-semibold {
+          font-weight: 600 !important;
+          margin: 5px;
+        }
+        .single-product.section {
+          padding-top: 70px !important;
+          margin-top: -45px !important;
+        }
+        img {
+          width: 90%;
+        }
+        /* featured game image */
+        #game-img {
+          max-width: 100%; /* stay responsive */
+          height: auto;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.5);
+          border-radius: 12px; /* optional – soft corners */
+          margin-top: 20px;
+        }
+      }
+
+      @media (min-width: 428px) and (max-width: 575.98px) {
+        .navbar {
+          background: url(assets/images/nav-foot-bg.png) no-repeat center center;
+          background-size: cover;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 15px;
+          border-bottom: 1px solid #222;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+        }
+        .badge {
+          position: absolute;
+          top: 25px;
+          right: 8px;
+          background: #ff4e6b;
+          color: #fff;
+          font-size: 0.7rem;
+          line-height: 1;
+          padding: 2px 5px;
+          border-radius: 50%;
+        }
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        #btn-customise .button-img {
+          width: 150px;
+          height: 50px;
+        }
+        #btn-demo .button-img {
+          width: 115px;
+          height: 50px;
+        }
+        #cart-btn .button-img {
+          width: 200px;
+          height: 50px;
+        }
+        /* center the three image buttons inside their flex wrapper */
+        .btn-group-custom {
+          justify-content: center; /* ⬅︎ main-axis -> horizontal centering  */
+          align-items: center; /* optional: cross-axis -> vertical centering */
+        }
+        .my-3 {
+          margin-top: 1rem !important;
+          margin-bottom: 1rem !important;
+          margin: 5px;
+        }
+        .single-product ul li {
+          display: block;
+          margin: 10px 0px;
+          font-size: 16px;
+          color: #0071f8;
+          margin: 5px;
+        }
+        .fw-semibold {
+          font-weight: 600 !important;
+          margin: 5px;
+        }
+        .single-product.section {
+          padding-top: 70px !important;
+          margin-top: -45px !important;
+        }
+        img {
+          width: 90%;
+        }
+        /* featured game image */
+        #game-img {
+          max-width: 100%; /* stay responsive */
+          height: auto;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.5);
+          border-radius: 12px; /* optional – soft corners */
+        }
+      }
+      @media (min-width: 576px) and (max-width: 767.98px) {
+        .navbar {
+          background: url(assets/images/nav-foot-bg.png) no-repeat center center;
+          background-size: cover;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 15px;
+          border-bottom: 1px solid #222;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+        }
+        .badge {
+          position: absolute;
+          top: 25px;
+          right: 8px;
+          background: #ff4e6b;
+          color: #fff;
+          font-size: 0.7rem;
+          line-height: 1;
+          padding: 2px 5px;
+          border-radius: 50%;
+        }
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+        #btn-customise .button-img {
+          width: 150px;
+          height: 50px;
+        }
+        #btn-demo .button-img {
+          width: 115px;
+          height: 50px;
+        }
+        #cart-btn .button-img {
+          width: 200px;
+          height: 50px;
+        }
+        /* center the three image buttons inside their flex wrapper */
+        .btn-group-custom {
+          justify-content: center; /* ⬅︎ main-axis -> horizontal centering  */
+          align-items: center; /* optional: cross-axis -> vertical centering */
+        }
+        .my-3 {
+          margin-top: 1rem !important;
+          margin-bottom: 1rem !important;
+          margin: 5px;
+        }
+        .single-product ul li {
+          display: block;
+          margin: 10px 0px;
+          font-size: 16px;
+          color: #0071f8;
+          margin: 5px;
+        }
+        .fw-semibold {
+          font-weight: 600 !important;
+          margin: 5px;
+        }
+        .single-product.section {
+          padding-top: 70px !important;
+          margin-top: -45px !important;
+        }
+        img {
+          width: 90%;
+        }
+        /* featured game image */
+        #game-img {
+          max-width: 100%; /* stay responsive */
+          height: auto;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.5);
+          border-radius: 12px; /* optional – soft corners */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="#">Game Detail</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span id="cart-count" class="badge">0</span>
+        </a>
+      </div>
+    </div>
+
+    <section class="single-product section">
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-6 text-center">
+            <img id="game-img" src="" alt="" />
+          </div>
+          <div class="col-lg-6">
+            <h2 id="game-title" class="fw-semibold mb-2"></h2>
+            <p id="game-desc" class="my-3"></p>
+            <ul class="list-unstyled small">
+              <li class="mb-1">
+                <strong>Game ID:</strong> <span id="game-id"></span>
+              </li>
+              <li><strong>Tags:</strong> <span id="game-tags"></span></li>
+            </ul>
+            <div class="btn-group-custom my-4 d-flex flex-wrap gap-3">
+              <a id="btn-customise" href="#">
+                <img
+                  src="assets/images/customise.png"
+                  alt="Customise"
+                  class="button-img"
+                />
+              </a>
+              <a id="btn-demo" href="#" target="_blank">
+                <img
+                  src="assets/images/try_demo.png"
+                  alt="Try Demo"
+                  class="button-img"
+                />
+              </a>
+              <button
+                id="cart-btn"
+                style="border: none; background: none; padding: 0"
+              >
+                <img
+                  id="cart-img"
+                  src="assets/images/Im.png"
+                  alt="Interested"
+                  class="button-img"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Copyright © 2025 Thinking Grey<br />
+      Design By Thinking Grey
+    </footer>
+
+    <script>
+      const getCart = () => {
+        try {
+          return JSON.parse(localStorage.getItem("tg_cart")) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const setCart = (cart) => {
+        localStorage.setItem("tg_cart", JSON.stringify(cart));
+      };
+
+      const syncBadge = () => {
+        const badge = document.getElementById("cart-count");
+        const cart = getCart();
+        badge.textContent = cart.length;
+        badge.style.display = cart.length ? "inline" : "none";
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const slug =
+          new URLSearchParams(location.search).get("game")?.toLowerCase() ||
+          "skillslice";
+
+        const CATALOG = {
+          skillslice: {
+            title: "Skill Slice",
+            cover: "skillSlice.png",
+            id: "SS-001",
+            tags: "Learning, Slice",
+            desc: "Skill Slice is a thrilling reflex-and-quiz challenge where every cut counts! \
+            Chop through juicy vegetables to unlock surprise questions — but think fast: you only get one shot to pick the right answer. \
+            Sharpen your instincts, slice with style, and test your brain under pressure. \
+            One slice. One chance. Will you make it count?",
+            custom: "customise1.html?game=skillslice",
+            demo: "https://thinkinggrey.in/skillslice.thinkinggrey.in",
+          },
+          islandconqueror: {
+            title: "Island Conqueror",
+            cover: "islandconqueror.png",
+            id: "IC-002",
+            genre: "Adventure",
+            tags: "Strategy, Explore",
+            desc: "Island Conqueror takes you on an adventure through the skies — with learning as your guide! \ Each island below represents an answer. Read the question carefully, then steer your hot air balloon to land on the correct one. \ Score 100 points for each accurate landing and keep conquering more islands. \ Are you ready to rule the skies with knowledge? ",
+            custom: "customise1.html?game=islandconqueror",
+            demo: "https://thinkinggrey.in/islandconqueror.thinkinggrey.in",
+          },
+          colorstrike: {
+            title: "Color Strike",
+            cover: "colorstrike.png",
+            id: "CS-003",
+            genre: "Puzzle",
+            tags: "Colors, Reflex",
+            desc: "Colour Strike flips the quiz format — here, your job is to eliminate the wrong answer! \ Read the question, point your paint gun, and shoot the incorrect option. \ Be precise — shoot the WRONG answer to score 100 points. \ Every round is a test of logic and focus. \Can you paint your way to victory without missing the mark? ",
+            custom: "customise1.html?game=colorstrike",
+            demo: "https://thinkinggrey.in/colourstrike.thinkinggrey.in",
+          },
+          skillarcade: {
+            title: "Skill Arcade",
+            cover: "skillarcade.png",
+            id: "SA-004",
+            genre: "Arcade",
+            tags: "Reflex, Challenges",
+            desc: "Skill Arcade combines high-speed racing with fast-thinking quiz action! \ Race your car along the track and reach question checkpoints. \ Each correct answer earns 100 points and gets you closer to the finish line. \ Complete the lap and claim your title as the racing quiz champion. \ Do you have the speed and smarts to cross the finish line first? ",
+            custom: "customise1.html?game=skillarcade",
+            demo: "https://thinkinggrey.in/skillarcade.thinkinggrey.in",
+          },
+          knowledgekonnect: {
+            title: "Knowledge Konnect",
+            cover: "knowledgekonnect.png",
+            id: "KK-005",
+            genre: "Quiz",
+            tags: "Trivia, Brain",
+            desc: "Knowledge Konnect is an exciting quiz-based game where players tackle 10 thought-provoking questions to climb the leaderboard and win up to 50,000 points. Starting with 100 points, each correct answer propels you to the next level, while every wrong answer reduces your top score by one level. Every question has four choices, and your goal is to pick the right one. Ready to play? Let the game begin!",
+            custom: "customise1.html?game=knowledgekonnect",
+            demo: "https://thinkinggrey.in/knowledgekonnect.thinkinggrey.in/",
+          },
+          ballpong: {
+            title: "Ball Pong",
+            cover: "ballpong.png",
+            id: "BP-006",
+            genre: "Sports",
+            tags: "Ping-Pong, Reflex",
+            desc: "Pong Ball is a skill-based quiz game where accuracy meets brainpower! \ Read each question carefully and aim your pong ball at the cup with the correct answer. Each hit earns you points and takes you one step closer to victory. The more questions you get right, the higher your score climbs. \ Can you master the perfect shot and become the ultimate quiz champ? ",
+            custom: "customise1.html?game=ballpong",
+            demo: "https://thinkinggrey.in/ballpong.thinkinggrey.in",
+          },
+          coincollect: {
+            title: "Collect The Coin",
+            cover: "coincollect.png",
+            id: "CC-007",
+            genre: "Casual",
+            tags: "Collect, Endless",
+            desc: "Coin Collect is a fast-paced tapping game that turns curiosity into points! \Tap to collect coins and reveal surprise quiz questions hidden inside. Answer correctly to earn rewards and keep the streak going. With each round, your speed and smarts are put to the test. \How many coins can you collect before the challenge gets real? ",
+            custom: "customise1.html?game=coincollect",
+            demo: "https://thinkinggrey.in/collectthecoins.thinkinggrey.in",
+          },
+          treasurehunt: {
+            title: "Treasure Hunt",
+            cover: "treasurehunt.png",
+            id: "TH-008",
+            genre: "Adventure",
+            tags: "Exploration, Puzzle",
+            desc: "Treasure Hunt is an exciting grab-and-learn game where knowledge lies beneath the surface! \Drop the claw to uncover sparkling treasures, each holding a tricky question. Only the sharpest minds can turn their findings into points. The deeper you dig, the harder it gets — but the bigger the rewards. \ Are you ready to mine your way to the top? ",
+            custom: "customise1.html?game=treasurehunt",
+            demo: "https://thinkinggrey.in/treasurehunt.thinkinggrey.in",
+          },
+          spaceshooter: {
+            title: "Space Shooter",
+            cover: "spaceshooter.png",
+            id: "SS-009",
+            genre: "Shooter",
+            tags: "Arcade, Space",
+            desc: "Space Shooter launches you into a galaxy full of quizzes and action! \Destroy incoming asteroids to reveal hidden questions. Aim, shoot, and think fast to keep scoring points. It’s a race through space where brains and reflexes go hand in hand. \Can you shoot your way to the top of the leaderboard? ",
+            custom: "customise1.html?game=spaceshooter",
+            demo: "https://thinkinggrey.in/spaceshooter.thinkinggrey.in",
+          },
+          spinthewheel: {
+            title: "Spin The Wheel",
+            cover: "spinthewheel.png",
+            id: "SW-010",
+            genre: "Quiz",
+            tags: "Spin, Luck, Trivia",
+            desc: "Spin the Wheel brings luck and learning together in a game of surprises! Spin to land on random questions — each one a new challenge. Pick the right answer and win points. The thrill of the unknown keeps every round fresh and fun, with knowledge as your greatest weapon. \ Will the wheel spin in your favor? ",
+            custom: "customise1.html?game=spinthewheel",
+            demo: "https://thinkinggrey.in/spinthewheel.thinkinggrey.in",
+          },
+        };
+
+        const p = CATALOG[slug] || {
+          title: slug,
+          cover: "placeholder.png",
+          id: "N/A",
+          tags: "",
+          desc: "",
+          custom: "#",
+          demo: "#",
+        };
+
+        document.getElementById("game-img").src = "assets/images/" + p.cover;
+        document.getElementById("game-img").alt = p.title;
+        document.getElementById("game-title").textContent = p.title;
+        document.getElementById("game-desc").textContent = p.desc;
+        document.getElementById("game-id").textContent = p.id;
+        document.getElementById("game-tags").textContent = p.tags;
+        document.getElementById("btn-customise").href = p.custom;
+        document.getElementById("btn-demo").href = p.demo;
+
+        const btn = document.getElementById("cart-btn");
+        const img = document.getElementById("cart-img");
+
+        const markAdded = () => {
+          img.src = "assets/images/added.png";
+          img.alt = "Added";
+        };
+
+        const markRemoved = () => {
+          img.src = "assets/images/Im.png";
+          img.alt = "Interested";
+        };
+
+        const cart = getCart();
+        if (cart.includes(p.title)) markAdded();
+
+        const demoLink = document.getElementById("btn-demo");
+        demoLink.href = p.demo; // you already set this
+        demoLink.target = "_blank";
+        demoLink.addEventListener("click", (e) => {
+          e.preventDefault(); // stop the default “#” navigation
+          window.open(p.demo, "_blank"); // open correct demo for this game
+        });
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          let cart = getCart();
+          if (cart.includes(p.title)) {
+            cart = cart.filter((x) => x !== p.title);
+            setCart(cart);
+            markRemoved();
+          } else {
+            cart.push(p.title);
+            setCart(cart);
+            markAdded();
+          }
+          syncBadge();
+        });
+
+        syncBadge();
+      });
+    </script>
+  </body>
+</html>

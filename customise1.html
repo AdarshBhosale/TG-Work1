@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customisation – Assessment</title>
+
+    <!-- Bootstrap + Font-Awesome -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Theme (Templatemo) -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+
+    <style>
+      .navbar {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 35px;
+        border-bottom: 1px solid #222;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* Adjust spacing between items */
+      }
+
+      .nav-actions .nav-link {
+        color: white;
+        font-size: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .nav-actions .nav-link:hover {
+        text-decoration: underline;
+        color: #ff00b8;
+      }
+      .navbar img.logo {
+        width: 140px;
+        height: 60px;
+      }
+      .navbar .cart-icon {
+        font-size: 26px;
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.3s, color 0.3s;
+      }
+      .navbar .cart-icon {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.45);
+      }
+      .img-hover-wrapper {
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 20px;
+        max-width: 100%;
+      }
+      .scroll-indicator {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ffffff;
+        color: #007bff;
+        border: 2px solid #007bff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+      }
+      .scroll-indicator:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .scroll-indicator i {
+        font-size: 20px;
+        transition: transform 0.3s ease;
+      }
+      /* === Try Game Now – image CTA === */
+      .btn-img {
+        width: 240px;
+        max-width: 100%;
+        height: 43px;
+        object-fit: contain;
+        margin-top: 12px;
+        margin-bottom: 24px;
+        border-radius: 25px;
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .btn-img:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+
+      .btn-upload {
+        background: url(assets/images/upload.png) center/contain no-repeat;
+        width: 243px;
+        height: 56px;
+        border: none;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 2px;
+
+        /* NEW ─ match the pill shape (adjust if needed) */
+        border-radius: 38px; /* try 35-40px for a 75-px-tall button */
+
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 20px;
+      }
+      .btn-upload:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+
+      .btn-trydemo {
+        background: url(assets/images/try_demo1.png) center / contain no-repeat;
+        width: 243px;
+        height: 48px;
+        margin: 0px 0px;
+        border: none;
+        display: inline-block;
+        cursor: pointer;
+        text-indent: -9999px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 27px;
+        margin-bottom: 20px;
+      }
+
+      .btn-trydemo:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+
+      #dl-sample-img {
+        height: 60px;
+        width: 190px;
+        object-fit: contain;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        border-radius: 12px;
+      }
+
+      #dl-sample-img:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+
+      /* Cart icon appearance */
+      /* Proper cart icon styling */
+      /* Proper cart icon styling */
+      .cart-li .nav-link i.fa-shopping-cart {
+        font-size: 1.8rem !important;
+        color: #fff !important;
+        line-height: 1;
+      }
+
+      /* ─── Base Styles ─── */
+      body {
+        background: url("assets/images/bg.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      .badge {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: #ff4e6b;
+        color: #fff;
+        font-size: 0.7rem;
+        line-height: 1;
+        padding: 2px 5px;
+        border-radius: 50%;
+      }
+
+      /* ─── Cart Icon & Badge ─── */
+      .cart-li {
+        position: relative;
+      }
+
+      .cart-li .badge {
+        position: absolute;
+        top: -6px;
+        right: -10px;
+        background: #ff4e6b;
+        color: #fff;
+        font-size: 0.7rem;
+        line-height: 1;
+        padding: 2px 6px;
+        border-radius: 50%;
+      }
+      .cart-li > a {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+      .cart-li .fa-shopping-cart {
+        font-size: 1.8rem;
+        color: #fff;
+      }
+      #game-img {
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.3s ease-in-out;
+        width: 100%;
+        display: block;
+      }
+
+      #game-img:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+
+      /* Optional click/press effect */
+      .btn-tg:active,
+      .btn-tg1:active {
+        transform: scale(0.96);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Add smooth animation */
+      .btn-tg,
+      .btn-tg1 {
+        transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      }
+
+      .btn-tg.btn-added {
+        background: #28a745 !important;
+      }
+
+      /* ─── Game Cover ─── */
+      .game-cover {
+        margin-top: 60px;
+        width: 100%;
+        object-fit: cover;
+        padding-top: 0px;
+        border-radius: 20px;
+      }
+
+      .col-lg-7 {
+        padding-top: 50px;
+        padding-left: 120px;
+        margin-left: 0px;
+        flex: 0 0 auto;
+        width: 58.333333%;
+      }
+
+      .contact-page .container {
+        max-width: 1140px; /* ensures nice width on big screens */
+        margin: 0 auto; /* centers horizontally */
+        padding: 0 20px; /* extra left-right padding on all screens */
+      }
+
+      footer {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        margin-top: 70px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #aaa;
+        border-top: 1px solid #222;
+        text-align: center;
+      }
+
+      /* image-only button: Interested in this Game */
+      .btn-interested {
+        background: url(assets/images/interested_game.png) center / contain
+          no-repeat;
+        width: 260px;
+        height: 64px;
+        border-radius: 30px;
+        border: none;
+        margin: 0 2px;
+        display: inline-block;
+        cursor: pointer;
+        text-indent: -9999px;
+        overflow: hidden;
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .btn-interested:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+
+      /* Make the <img> fill the anchor perfectly */
+      #dl-sample img {
+        width: 100%; /* stretch to anchor width  */
+        height: 100%; /* stretch to anchor height */
+        object-fit: contain; /* keep image proportions   */
+        display: block; /* kill default inline-img gap */
+      }
+
+      /* =========================================================
+   DEFAULT: “I’m interested”      (already in your file)
+   ========================================================= */
+      .btn-interested {
+        background: url(assets/images/interested_game.png) center/contain
+          no-repeat;
+        width: 260px;
+        height: 64px;
+        /* …the rest of your styles stay… */
+      }
+
+      /* =========================================================
+   ADDED STATE – smaller, tighter ribbon
+   ========================================================= */
+      .btn-interested.btn-added {
+        background-image: url(assets/images/added.png);
+        width: 187px;
+
+        height: 56px; /* a bit shorter               */
+      }
+
+      @media (max-width: 991.98px) {
+        .contact-page .row {
+          flex-direction: column;
+          gap: 40px;
+        }
+      }
+
+      @media (min-width: 1000px) and (max-width: 1200px) {
+        #game-img {
+          width: 100%;
+          display: block;
+          margin: 65px auto 0; /*  ⬅︎  -80 px top, auto left & right  */
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease-in-out;
+          padding: 0;
+        }
+        .row {
+          --bs-gutter-x: -11.5rem;
+          --bs-gutter-y: 0;
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: calc(-1 * var(--bs-gutter-y));
+          margin-right: calc(-0.5 * var(--bs-gutter-x));
+          margin-left: calc(-0.5 * var(--bs-gutter-x));
+        }
+      }
+
+      @media (min-width: 992px) {
+        .col-lg-7 {
+          padding-top: 50px;
+          padding-left: 120px;
+          margin-top: -110px;
+          margin-left: 0px;
+          flex: 0 0 auto;
+          width: 58.333333%;
+        }
+        .text-muted {
+          margin-top: 10px;
+          height: 35px;
+          --bs-text-opacity: 1;
+          color: var(--bs-secondary-color) !important;
+          font-size: 16px;
+          color: #000000;
+        }
+        .text-primary {
+          --bs-text-opacity: 1;
+          font-size: 16px;
+          color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+        }
+        .mb-4 {
+          font-size: 16px;
+          margin-top: 0.5rem;
+          margin-bottom: 1.5rem !important;
+        }
+        .col-lg-5 {
+          margin-top: -120px;
+          flex: 0 0 auto;
+          width: 41.66666667%;
+        }
+      }
+
+      /* Media Query */
+      @media (max-width: 428px) {
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+
+        .page-heading {
+          padding: 100px 0px 2px 0px;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+        .container,
+        .container-fluid,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl,
+        .container-xxl {
+          --bs-gutter-x: 2.5rem;
+          --bs-gutter-y: 0;
+          width: 100%;
+          padding-right: calc(var(--bs-gutter-x) * 0.5);
+          padding-left: calc(var(--bs-gutter-x) * 0.5);
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .btn-tg,
+        .btn-tg1 {
+          margin-top: 10px;
+          display: inline-block;
+          height: 50px;
+          line-height: 50px;
+          background: #ee626b;
+          color: #fff;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 0 20px;
+          border: none;
+          border-radius: 25px;
+          transition: background 0.3s;
+        }
+        .text-muted {
+          --bs-text-opacity: 1;
+          color: var(--bs-secondary-color) !important;
+          margin-top: 10px;
+        }
+        .page-heading h3 {
+          font-size: 35px;
+          text-transform: uppercase;
+          color: #fff;
+          margin-top: 20px;
+          position: relative;
+          margin-bottom: 20px;
+        }
+        .logo-img {
+          width: 120px;
+        }
+        .col-lg-7 {
+          padding-top: 0px;
+          padding-left: 7px;
+          margin-left: 18px;
+          flex: 0 0 auto;
+          width: 107.333333%;
+        }
+        .navbar {
+          background: url(assets/images/nav-foot-bg.png) no-repeat center center;
+          background-size: cover;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 15px;
+          border-bottom: 1px solid #222;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+        }
+        .badge {
+          position: absolute;
+          top: 25px;
+          right: 8px;
+          background: #ff4e6b;
+          color: #fff;
+          font-size: 0.7rem;
+          line-height: 1;
+          padding: 2px 5px;
+          border-radius: 50%;
+        }
+        .custom-font {
+          font-family: "Poppins", sans-serif;
+          font-size: 1.3rem;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          color: #ffb3ec;
+        }
+        .nav-actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        #game-img {
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease-in-out;
+          width: 100%;
+          display: block;
+          margin-top: -80px;
+        }
+        .btn-dl-sample {
+          background: url(assets/images/download.png) center / contain no-repeat;
+          width: 160px;
+          height: 56px;
+          border: none;
+          margin: 0px 0px 15px;
+          display: inline-block;
+          cursor: pointer;
+          text-indent: -9999px;
+          overflow: hidden;
+          border-radius: 40px;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-upload {
+          background: url(assets/images/upload.png) center / contain no-repeat;
+          width: 200px;
+          height: 47px;
+          border: none;
+          display: inline-block;
+          cursor: pointer;
+          margin: 0 0px;
+          border-radius: 38px;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          margin-bottom: 20px;
+        }
+        .btn-trydemo {
+          background: url(assets/images/try_demo1.png) center / contain
+            no-repeat;
+          width: 183px;
+          height: 38px;
+          margin: 0px 0px;
+          border: none;
+          display: inline-block;
+          cursor: pointer;
+          text-indent: -9999px;
+          overflow: hidden;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border-radius: 27px;
+          margin-bottom: 20px;
+        }
+        .btn-interested {
+          background: url(assets/images/interested_game.png) center / contain
+            no-repeat;
+          width: 175px;
+          height: 42px;
+          border-radius: 30px;
+          border: none;
+          margin: 0 2px;
+          display: inline-block;
+          cursor: pointer;
+          text-indent: -9999px;
+          overflow: hidden;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-img {
+          width: 200px;
+          max-width: 100%;
+          height: 36px;
+          object-fit: contain;
+          margin-top: 12px;
+          margin-bottom: 24px;
+          border-radius: 25px;
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-interested.btn-added {
+          width: 150px;
+          height: 45px;
+        }
+      }
+
+      @media (min-width: 428px) and (max-width: 575.98px) {
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+
+        .page-heading {
+          padding: 100px 0px 2px 0px;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+        .container,
+        .container-fluid,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl,
+        .container-xxl {
+          --bs-gutter-x: 2.5rem;
+          --bs-gutter-y: 0;
+          width: 100%;
+          padding-right: calc(var(--bs-gutter-x) * 0.5);
+          padding-left: calc(var(--bs-gutter-x) * 0.5);
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .btn-tg,
+        .btn-tg1 {
+          margin-top: 10px;
+          display: inline-block;
+          height: 50px;
+          line-height: 50px;
+          background: #ee626b;
+          color: #fff;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 0 20px;
+          border: none;
+          border-radius: 25px;
+          transition: background 0.3s;
+        }
+        .text-muted {
+          --bs-text-opacity: 1;
+          color: var(--bs-secondary-color) !important;
+          margin-top: 10px;
+        }
+        .page-heading h3 {
+          font-size: 28px;
+          text-transform: uppercase;
+          color: #fff;
+          margin-top: 20px;
+          position: relative;
+          margin-bottom: 20px;
+        }
+        .logo-img {
+          width: 150px;
+        }
+        .game-cover {
+          width: 50%;
+          object-fit: cover;
+          padding-top: 30px;
+        }
+        .contact-page .row {
+          flex-direction: column;
+          gap: 0px;
+        }
+        .col-lg-7 {
+          padding-top: 50px;
+          padding-left: 59px;
+          margin-left: 0px;
+          flex: 0 0 auto;
+          width: 112.333333%;
+        }
+        #game-img {
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease-in-out;
+          width: 100%;
+          display: block;
+          margin-top: -80px;
+          padding: 0px;
+        }
+      }
+
+      @media (min-width: 576px) and (max-width: 767.98px) {
+        .cart-li {
+          margin-left: 0 !important;
+        }
+
+        .page-heading {
+          padding: 100px 0px 2px 0px;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+        .container,
+        .container-fluid,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl,
+        .container-xxl {
+          --bs-gutter-x: 2.5rem;
+          --bs-gutter-y: 0;
+          width: 100%;
+          padding-right: calc(var(--bs-gutter-x) * 0.5);
+          padding-left: calc(var(--bs-gutter-x) * 0.5);
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .btn-tg,
+        .btn-tg1 {
+          margin-top: 10px;
+          display: inline-block;
+          height: 50px;
+          line-height: 50px;
+          background: #ee626b;
+          color: #fff;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 0 20px;
+          border: none;
+          border-radius: 25px;
+          transition: background 0.3s;
+        }
+        .text-muted {
+          --bs-text-opacity: 1;
+          color: var(--bs-secondary-color) !important;
+          margin-top: 10px;
+        }
+        .page-heading h3 {
+          font-size: 35px;
+          text-transform: uppercase;
+          color: #fff;
+          margin-top: 20px;
+          position: relative;
+          margin-bottom: 20px;
+        }
+        .logo-img {
+          width: 150px;
+        }
+        .game-cover {
+          width: 50%;
+          object-fit: cover;
+          padding-top: 50px;
+        }
+        .col-lg-7 {
+          padding-top: 0px;
+          padding-left: 59px;
+          margin-left: 0px;
+          flex: 0 0 auto;
+          width: 112.333333%;
+        }
+        #game-img {
+          width: 80%;
+          display: block;
+          margin: -80px auto 0; /*  ⬅︎  -80 px top, auto left & right  */
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease-in-out;
+          padding: 0;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 999px) {
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+
+        .page-heading {
+          padding: 100px 0px 2px 0px;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+        .container,
+        .container-fluid,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl,
+        .container-xxl {
+          --bs-gutter-x: 2.5rem;
+          --bs-gutter-y: 0;
+          width: 100%;
+          padding-right: calc(var(--bs-gutter-x) * 0.5);
+          padding-left: calc(var(--bs-gutter-x) * 0.5);
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .btn-tg,
+        .btn-tg1 {
+          margin-top: 10px;
+          display: inline-block;
+          height: 50px;
+          line-height: 50px;
+          background: #ee626b;
+          color: #fff;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          padding: 0 20px;
+          border: none;
+          border-radius: 25px;
+          transition: background 0.3s;
+        }
+        .text-muted {
+          --bs-text-opacity: 1;
+          color: var(--bs-secondary-color) !important;
+          margin-top: 10px;
+        }
+        .page-heading h3 {
+          font-size: 35px;
+          text-transform: uppercase;
+          color: #fff;
+          margin-top: 20px;
+          position: relative;
+          margin-bottom: 20px;
+        }
+        .logo-img {
+          width: 150px;
+        }
+        .game-cover {
+          width: 50%;
+          object-fit: cover;
+          padding-top: 50px;
+        }
+        #game-img {
+          width: 80%;
+          display: block;
+          margin: -80px auto 0; /*  ⬅︎  -80 px top, auto left & right  */
+          box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+          transition: transform 0.3s ease-in-out;
+          padding: 0;
+        }
+        .col-lg-7 {
+          padding-top: 0px;
+          padding-left: 120px;
+          margin-left: 0px;
+          flex: 0 0 auto;
+          width: 58.333333%;
+          width: 980px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+        .cart-li {
+          margin-left: 0 !important;
+        }
+
+        .page-heading {
+          padding: 100px 0px 2px 0px;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+        .container,
+        .container-fluid,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl,
+        .container-xxl {
+          --bs-gutter-x: 2.5rem;
+          --bs-gutter-y: 0;
+          width: 100%;
+          padding-right: calc(var(--bs-gutter-x) * 0.5);
+          padding-left: calc(var(--bs-gutter-x) * 0.5);
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .text-muted {
+          --bs-text-opacity: 1;
+          color: var(--bs-secondary-color) !important;
+          margin-top: 10px;
+        }
+        .page-heading h3 {
+          font-size: 35px;
+          text-transform: uppercase;
+          color: #fff;
+          margin-top: 20px;
+          position: relative;
+          margin-bottom: 20px;
+        }
+        .logo-img {
+          width: 150px;
+        }
+        .row {
+          --bs-gutter-x: -8.5rem -136px;
+          --bs-gutter-y: 0;
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: calc(-1 * var(--bs-gutter-y));
+          margin-right: calc(-0.5 * var(--bs-gutter-x));
+          margin-left: calc(-0.5 * var(--bs-gutter-x));
+        }
+      }
+
+      /* ─── Nav Link Hover (Home & Product Detail) ─── */
+
+      /* ─── Cart Icon Hover ─── */
+      .cart-li > a {
+        transition: transform 0.3s ease;
+      }
+
+      .cart-li > a:hover {
+        transform: scale(1.1);
+      }
+
+      .cart-li > a:hover .fa-shopping-cart {
+        color: #fff;
+        transition: transform 0.3s ease;
+        transform: scale(1.2);
+      }
+      .btn-dl-sample {
+        background: url(assets/images/download.png) center / contain no-repeat;
+        width: 200px;
+        height: 70px;
+        border: none;
+        margin: 0px -4px 15px;
+        display: inline-block;
+        cursor: pointer;
+        text-indent: -9999px;
+        overflow: hidden;
+        border-radius: 40px;
+        box-shadow: 0 5px 25px rgba(255, 0, 184, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .btn-dl-sample:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(255, 0, 184, 0.8);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="toast-container"></div>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="#">Customisation</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span id="cart-count" class="badge">0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ***** MAIN BLOCK ***** -->
+    <div class="contact-page section center-wrap">
+      <div class="container">
+        <div class="row align-items-start">
+          <!-- LEFT: Game Preview & Try -->
+          <div class="col-lg-5 text-center">
+            <img
+              id="game-img"
+              src=""
+              alt="Game Cover"
+              class="game-cover mb-3"
+            />
+            <h5>
+              <span style="font-weight: normal">Game Name:</span>
+              <span id="game-name" style="font-weight: bold"></span>
+            </h5>
+            <h4 id="game-title" class="d-none"></h4>
+
+            <a
+              id="try-game-btn"
+              href="#"
+              target="_blank"
+              class="d-inline-block mb-4"
+            >
+              <img
+                src="assets/images/try_now.png"
+                alt="Try Game Now"
+                class="btn-img"
+              />
+            </a>
+          </div>
+
+          <!-- RIGHT: Steps -->
+          <div class="col-lg-7 step-box">
+            <h4 class="custom-font fw-semibold mb-3">
+              Steps to Customise your Game :
+            </h4>
+
+            <br />
+            <p class="mb-1 fw-semibold">Step&nbsp;1</p>
+            <p class="mb-2">Download assessment sample</p>
+
+            <a
+              id="dl-sample"
+              class="btn-dl-sample"
+              href="assets/files/assessment-sample.pdf"
+              download
+              aria-label="Download assessment sample"
+            >
+              Download assessment sample
+            </a>
+
+            <p class="mb-1 fw-semibold">Step 2</p>
+            <p class="mb-2">Add questions in sample Excel file</p>
+            <p class="small mb-4">
+              <span class="text-primary">
+                - limit is 10, please add 10 questions <br />- Do not add extra
+                columns or rename headers <br />
+                - Cannot upload duplicate id data</span
+              ><br />
+            </p>
+
+            <p class="mb-1 fw-semibold">Step 3</p>
+            <p class="mb-2">Upload file</p>
+            <input type="file" id="excel-input" accept=".xlsx,.xls" hidden />
+            <input type="hidden" id="product-name" />
+            <!-- Image-based “Browse & Upload Excel” button -->
+            <button
+              type="button"
+              id="upload-btn"
+              class="btn-upload"
+              aria-label="Browse and upload Excel file"
+            ></button>
+
+            <p class="mb-1 fw-semibold">Step 4</p>
+            <p class="mb-2">
+              You’re done uploading—now try the demo <br />
+              with updated assessments
+            </p>
+            <a
+              id="try-demo1"
+              class="btn-trydemo"
+              href="#"
+              target="_blank"
+              aria-label="Try the demo"
+            >
+              Try the demo
+            </a>
+
+            <p class="mb-1 fw-semibold">Step 5</p>
+            <p class="mb-2">Add this customised game to your cart</p>
+            <button
+              id="add-to-cart-btn"
+              class="btn-interested"
+              type="button"
+              aria-label="Add this customised game to cart"
+            >
+              I’m interested in this game
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="scroll-indicator"
+      class="scroll-indicator"
+      onclick="toggleScroll()"
+      title="Scroll for more"
+    >
+      <i id="scroll-icon" class="fas fa-chevron-down"></i>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      Copyright © 2025 Thinking Grey<br />
+      Design By Thinking Grey
+    </footer>
+
+    <!-- JS Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
+    <!-- ─── DYNAMIC INJECTION + AJAX upload ─── -->
+    <script>
+      (() => {
+        const slug =
+          new URLSearchParams(location.search).get("game")?.toLowerCase() ||
+          "skillslice";
+
+        const nameMap = {
+          skillslice: "Skill Slice",
+          islandconqueror: "Island Conqueror",
+          colorstrike: "Color Strike",
+          skillarcade: "Skill Arcade",
+          knowledgekonnect: "Knowledge Konnect",
+          ballpong: "Ball Pong",
+          coincollect: "Collect The Coin",
+          treasurehunt: "Treasure Hunt",
+          spaceshooter: "Space Shooter",
+          spinthewheel: "Spin The Wheel",
+        };
+        const imgMap = {
+          skillslice: "skillSlice.png",
+          islandconqueror: "islandconqueror.png",
+          colorstrike: "colorstrike.png",
+          skillarcade: "skillarcade.png",
+          knowledgekonnect: "knowledgekonnect.png",
+          ballpong: "ballpong.png",
+          coincollect: "coincollect.png",
+          treasurehunt: "treasurehunt.png",
+          spaceshooter: "spaceshooter.png",
+          spinthewheel: "spinthewheel.png",
+        };
+        const demoMap = {
+          skillslice: "https://thinkinggrey.in/skillslice.thinkinggrey.in",
+          islandconqueror:
+            "https://thinkinggrey.in/islandconqueror.thinkinggrey.in",
+          colorstrike: "https://thinkinggrey.in/colourstrike.thinkinggrey.in",
+          skillarcade: "https://thinkinggrey.in/skillarcade.thinkinggrey.in",
+          knowledgekonnect:
+            "https://thinkinggrey.in/knowledgekonnect.thinkinggrey.in/",
+          ballpong: "https://thinkinggrey.in/ballpong.thinkinggrey.in",
+          coincollect:
+            "https://thinkinggrey.in/collectthecoins.thinkinggrey.in",
+          treasurehunt: "https://thinkinggrey.in/treasurehunt.thinkinggrey.in",
+          spaceshooter: "https://thinkinggrey.in/spaceshooter.thinkinggrey.in",
+          spinthewheel: "https://thinkinggrey.in/spinthewheel.thinkinggrey.in",
+        };
+
+        const name = nameMap[slug] || slug;
+        const cover = imgMap[slug] || "placeholder.png";
+        const demoURL = demoMap[slug] || "#";
+
+        document.getElementById("game-title").textContent = name;
+        document.getElementById("game-name").textContent = name;
+        document.getElementById("product-name").value = name;
+        document.getElementById("game-img").src = "assets/images/" + cover;
+        document.getElementById("game-img").alt = name;
+
+        document.getElementById("dl-sample").href = "samples/" + slug + ".xlsx";
+        document.getElementById("dl-sample").download = slug + ".xlsx";
+
+        // Set both demo links
+        document.getElementById("try-game-btn").href = demoURL;
+        document.getElementById("try-demo1").href = demoURL;
+
+        // Upload logic
+        const fileIn = document.getElementById("excel-input");
+        document.getElementById("upload-btn").onclick = () => fileIn.click();
+        fileIn.onchange = () => {
+          if (!fileIn.files.length) return;
+          const fd = new FormData();
+          fd.append("uploaded_file", fileIn.files[0]);
+          fd.append("productName", name);
+          fetch("http://localhost/app/insert_question.php", {
+            method: "POST",
+            body: fd,
+          })
+            .then((r) => r.json())
+            .then((d) => alert(d.success ? d.message : "Error: " + d.message))
+            .catch((err) => alert("Upload failed: " + err));
+        };
+      })();
+    </script>
+
+    <!-- ─── CART LOGIC ─── -->
+    <script>
+      /* ---------- CART BADGE HELPERS (unchanged) ---------- */
+      function getCart() {
+        try {
+          return JSON.parse(localStorage.getItem("tg_cart")) || [];
+        } catch {
+          return [];
+        }
+      }
+      function setCart(c) {
+        localStorage.setItem("tg_cart", JSON.stringify(c));
+      }
+      function syncBadge() {
+        const b = document.getElementById("cart-count");
+        const n = getCart().length;
+        b.textContent = n;
+        b.style.display = n ? "inline" : "none";
+      }
+
+      /* ---------- TOGGLE BUTTON IMAGE ---------- */
+      document.addEventListener("DOMContentLoaded", () => {
+        syncBadge();
+
+        const btn = document.getElementById("add-to-cart-btn");
+        const title = document.getElementById("game-title").textContent;
+
+        const IMG_INTERESTED = "assets/images/interested_game.png";
+        const IMG_ADDED = "assets/images/added.png";
+
+        /* helper functions */
+        const setInterested = () => {
+          btn.style.backgroundImage = `url("${IMG_INTERESTED}")`;
+          btn.classList.remove("btn-added"); // keep your green flash if you want
+          btn.setAttribute("aria-label", "Add this customised game to cart");
+        };
+        const setAdded = () => {
+          btn.style.backgroundImage = `url("${IMG_ADDED}")`;
+          btn.classList.add("btn-added");
+          btn.setAttribute(
+            "aria-label",
+            "Remove this customised game from cart"
+          );
+        };
+
+        /* initial state */
+        if (getCart().includes(title)) {
+          setAdded();
+        } else {
+          setInterested();
+        }
+
+        /* toggle on click */
+        btn.onclick = (e) => {
+          e.preventDefault();
+          let cart = getCart();
+
+          if (cart.includes(title)) {
+            cart = cart.filter((x) => x !== title);
+            setInterested();
+          } else {
+            cart.push(title);
+            setAdded();
+          }
+          setCart(cart);
+          syncBadge();
+        };
+      });
+      function toggleScroll() {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.body.offsetHeight;
+
+        if (scrollY + windowHeight >= docHeight - 50) {
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          // Scroll down
+          window.scrollBy({ top: windowHeight * 0.5, behavior: "smooth" });
+        }
+      }
+
+      window.addEventListener("scroll", () => {
+        const icon = document.getElementById("scroll-icon");
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.body.offsetHeight;
+
+        if (scrollY <= 10) {
+          // At very top of page
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        } else if (scrollY + windowHeight >= docHeight - 10) {
+          // At bottom of page
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        } else {
+          // In between
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
+      });
+
+      // Ensure the correct icon loads on initial page load
+      window.addEventListener("DOMContentLoaded", () => {
+        window.dispatchEvent(new Event("scroll"));
+      });
+    </script>
+  </body>
+</html>

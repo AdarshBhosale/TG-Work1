@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Your Cart – TG Gaming</title>
+
+    <!-- Bootstrap + Font-Awesome -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Fonts & Bootstrap -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <style>
+        .navbar {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 35px;
+        border-bottom: 1px solid #222;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+    footer {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        margin-top: 70px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #aaa;
+        border-top: 1px solid #222;
+        text-align: center;
+      }
+        .navbar img.logo {
+        width: 140px;
+        height: 60px;
+      }
+      .navbar .cart-icon {
+        font-size: 26px;
+        color: #fff;
+        cursor: pointer;
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      .navbar .cart-icon:hover {
+        color: #ff00b8;
+        transform: scale(1.2);
+      }
+
+      .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between items */
+}
+
+.nav-actions .nav-link {
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-actions .nav-link:hover {
+  text-decoration: underline;
+  color: #ff00b8;
+}
+
+.badge {
+  position: absolute;
+    top: 25px;
+    right: 25px;
+  background: #ff4e6b;
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 1;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+      /* ===== Hover Effect for Customise Button ===== */
+.btn-primary {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Hover Effect for Request For Call Button ===== */
+.btn-checkout {
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn-checkout:hover {
+  background: #d94c55;
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-checkout:active {
+  transform: scale(0.96);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+      .py-5 {
+        padding-top: 0rem 0px !important;
+        padding-bottom: 3rem !important;
+      }
+/* Customise button */
+.btn-customise{
+    display: inline-block;
+    width: 123px;
+    height: 34px;
+    background: url(assets/images/customise1.png) center / contain no-repeat;
+    text-indent: -9999px;
+    box-shadow: 0 5px 25px rgba(255, 0, 184, 0.7);
+}
+
+/* Optional hover/press effect */
+.btn-customise:hover  {  
+  transform:scale(1.1) translateY(-2px);
+  filter:drop-shadow(0 0 6px #ff00b8); 
+    transition:transform .3s ease,filter .3s ease;
+}
+
+
+
+       body {
+        background: url("assets/images/bg.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .cart-li {
+        position: relative;
+        margin-left: auto;
+      }
+      .cart-li .badge {
+            position: absolute;
+    top: -1px;
+    right: 1px;
+    background: #ff4e6b;
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    border-radius: 50%;
+      }
+      .cart-table thead th {
+        border-bottom: 2px solid #e9ecef;
+        font-weight: 600;
+      }
+      .cart-item-img {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 0.25rem;
+      }
+      .totals-box {
+        border: 1px solid #e9ecef;
+        border-radius: 0.25rem;
+        padding: 1.5rem;
+      }
+      .totals-box h5 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+      .totals-box td {
+        padding: 0.25rem 0;
+      }
+      .totals-box td:last-child {
+        text-align: right;
+      }
+      .info-head {
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+      }
+      .info-head::after {
+        content: "";
+        display: inline-block;
+        width: 50px;
+        height: 2px;
+        background: #006dfc;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+      .info-form .form-control {
+        height: 48px;
+        border-radius: 0.25rem;
+        font-size: 0.9rem;
+      }
+  .btn-checkout {
+  display: block;
+  margin: 1.5rem auto 0;    /* center it with top margin */
+  padding: 0 22px;          /* keeps your left/right padding */
+  height: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: #ee626b;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  transition: 0.3s;
+
+  /* new width rules: */
+  width: auto;              /* grow only to fit padding + text */
+  min-width: 180px;         /* never smaller than this */
+  max-width: 260px;         /* never larger than this */
+}
+
+      .btn-checkout:hover {
+        background: #d94c55;
+      }
+      /* toast container */
+      #toast-container {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1055;
+      }
+      .btn-checkout {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        border-radius: 20px;
+      }
+
+      /* -------- REQUEST FOR CALL image button -------- */
+.btn-request-call{
+  background:url('assets/images/requestcall.png') center/contain no-repeat;
+  width:172px;
+  height:60px;          /* 🔄  whatever the PNG’s height is  */
+  margin:24px auto;
+  border:none;
+  padding:0;
+  display:block;
+  cursor:pointer;
+
+  /* shadow & rounded outline */
+  border-radius: 30px;          /* half of height for pill */
+  box-shadow: 0 5px 25px rgba(255, 0, 184, 0.7);
+  transition:.2s;
+}
+.btn-request-call:hover{
+   transform:scale(1.1) translateY(-2px);
+    filter:drop-shadow(0 0 6px #ff00b8);
+}
+.btn-request-call:hover:not([disabled]){
+  transform:translateY(-2px);
+}
+
+.btn-request-call:active:not([disabled]){
+  transform: none;
+  filter: brightness(0.95);
+}
+
+/* Optional disabled state */
+.btn-request-call[disabled]{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.my-4 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+      @media (max-width: 428px) {
+        .navbar {
+          background: url(assets/images/nav-foot-bg.png) no-repeat center center;
+          background-size: cover;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 16px 15px;
+          border-bottom: 1px solid #222;
+          position: sticky;
+          top: 0;
+          z-index: 999;
+        }
+         .badge {
+          position: absolute;
+          top: 25px;
+          right: 8px;
+          background: #ff4e6b;
+          color: #fff;
+          font-size: 0.7rem;
+          line-height: 1;
+          padding: 2px 5px;
+          border-radius: 50%;
+        }
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+        .logo-img {
+           width: 120px;
+        }
+        .cart-li {
+          margin-left: 0 !important;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+        .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* make the centering row span the whole viewport and become a flexbox */
+.row.justify-content-center{
+  min-height:100vh;                 /* full viewport height            */
+  display:flex;                     /* enable flexbox                 */
+  justify-content:center;           /* center horizontally            */
+  align-items:center;               /* center vertically              */
+}
+
+/* optional: keep the form from stretching too wide on desktops */
+.col-md-6{
+  max-width:420px;                  /* adjust to taste                */
+  width:100%;                       /* still fluid under 420px        */
+}
+
+/* slight visual polish */
+#delivery-form .form-control{
+  padding:.75rem 1rem;
+  font-size:1rem;
+  border-radius:8px;
+}
+.g-3, .gx-3 {
+    --bs-gutter-x: -3rem
+-48px
+;
+}
+      }
+
+      @media (min-width: 428px) and (max-width: 575.98px) {
+      
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+        .py-5 {
+          padding-top: 0rem !important;
+          padding-bottom: 3rem !important;
+        }
+          .logo-img {
+           width: 150px;
+        }
+        .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    --bs-gutter-x: 4.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-right: auto;
+    margin-left: auto;
+}
+      }
+
+      @media (min-width: 576px) and (max-width: 767.98px) {
+       
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+        .mb-3 {
+          margin-bottom: 1rem !important;
+          margin-top: 2rem;
+        }
+        .logo-img {
+             width: 150px;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1199.98px) {
+        
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+        .mb-3 {
+          margin-bottom: 1rem !important;
+          margin-top: 2rem;
+        }
+        .logo-img {
+           width: 150px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+       
+        .single-product.section {
+          padding: 0px;
+          margin-top: 50px;
+        }
+        .btn-group-custom > * {
+          margin-top: 10px;
+          margin-right: 10px;
+        }
+
+        .cart-li {
+          margin-left: 0 !important;
+        }
+        .mb-3 {
+          margin-bottom: 1rem !important;
+          margin-top: 2rem;
+        }
+        .logo-img {
+           width: 150px;
+        }
+        
+        footer {
+        background: url("assets/images/nav-foot-bg.png") no-repeat center center;
+        background-size: cover;
+        margin-top: 70px;
+        padding: 30px 20px;
+        font-size: 1rem;
+        color: #aaa;
+        border-top: 1px solid #222;
+        text-align: center;
+      }
+      }
+    </style>
+  </head>
+<body>
+      <!-- NAVBAR -->
+    <div class="navbar">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="#">My Games</a>
+        <a href="cart.html" class="nav-link cart-link">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span id="cart-count" class="badge">0</span>
+        </a>
+      </div>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="container" style="margin-top:2rem;">
+      <!-- Cart Table -->
+      <div class="table-responsive mb-5">
+        <table class="table align-middle cart-table">
+          <thead>
+            <tr>
+              <th style="color: #fff;">My Games</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cart-body"></tbody>
+        </table>
+      </div>
+
+      <!-- Checkout Form -->
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+          <form id="delivery-form" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <input type="text"    name="first_name" class="form-control" placeholder="First Name" required>
+              </div>
+              <div class="col-sm-6">
+                <input type="text"    name="last_name"  class="form-control" placeholder="Last Name"  required>
+              </div>
+              <div class="col-12">
+                <input type="email"   name="email"      class="form-control" placeholder="Email Address" required>
+              </div>
+              <div class="col-12">
+                <input type="tel"     name="phone"      class="form-control" placeholder="Phone" required>
+              </div>
+            </div>
+
+            <!-- ——— HIDDEN FIELDS ——— -->
+            <input type="hidden" id="cart_json"   name="cart_json"   value="">
+            <input type="hidden" id="totals_json" name="totals_json" value="">
+
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+          <!-- Image-based Request for Call button -->
+<button id="checkout-btn"
+        class="btn-request-call"
+        type="submit"
+        disabled  
+        aria-label="Request for Call">
+</button>
+
+
+
+ <div class="text-center my-4">
+  <span style="font-weight: bold; font-size: 18px;">OR</span>
+</div>
+
+          </form>
+
+          <p class="mt-4 text-center">
+            Connect With the Teams for enquiry<br>
+            Email: <b> mugdha@thinkinggrey.com</b><br>
+            Tel: <b>  +91 9324670321</b>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+         <footer>
+      Copyright © 2025 Thinking Grey<br />
+      Design By Thinking Grey
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+      
+      // ─── Utilities ──────────────────────────────────────────────────────────
+      function getCart() {
+        try { return JSON.parse(localStorage.getItem("tg_cart"))||[]; }
+        catch { return []; }
+      }
+      function setCart(c) {
+        localStorage.setItem("tg_cart", JSON.stringify(c));
+        updateBadge();
+      }
+      function updateBadge() {
+        const b = document.getElementById("cart-count"),
+              n = getCart().length;
+        if (!b) return;
+        b.textContent = n;
+        b.style.display = n > 0 ? "inline-block" : "none";
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        updateBadge();
+        renderCart();
+      });
+
+      // ─── Product List ───────────────────────────────────────────────────────
+     const PRODUCTS = {
+          "Skill Slice":      {img: "assets/images/skillSlice.png" },
+          "Island Conqueror": {img: "assets/images/islandconqueror.png" },
+          "Color Strike":     {img: "assets/images/colorstrike.png" },
+          "Skill Arcade":     {img: "assets/images/skillarcade.png" },
+          "Knowledge Konnect":{img: "assets/images/knowledgekonnect.png" },
+          "Ball Pong":        {img: "assets/images/ballpong.png" },
+          "Collect The Coin":     {img: "assets/images/coincollect.png" },
+          "Treasure Hunt":    {img: "assets/images/treasurehunt.png" },
+          "Space Shooter":    {img: "assets/images/spaceshooter.png" },
+          "Spin The Wheel":   {img: "assets/images/spinthewheel.png" }
+       };
+
+      // ─── Render Cart Table ─────────────────────────────────────────────────
+     function renderCart(){
+  const body = document.getElementById("cart-body"),
+        btn  = document.getElementById("checkout-btn");
+  body.innerHTML = "";
+
+  let cart = getCart();
+
+  // 🔍 Filter only valid product names
+  cart = cart.filter(name => PRODUCTS[name]);
+
+  // 🛠 Update localStorage to remove invalid items permanently
+  setCart(cart);
+
+  console.log("🛒 Cart Contents:", cart);
+
+  if(cart.length === 0){
+    body.innerHTML = `
+      <tr><td colspan="3" class="py-5 text-center text-white">
+        Your cart is empty.
+      </td></tr>`;
+    btn.disabled = true;
+    return;
+  }
+
+  cart.forEach(name => {
+    const p = PRODUCTS[name];
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+     <td class="d-flex align-items-center gap-3">
+  <img src="${p.img}" class="cart-item-img" alt="${name}">
+  <div style="color:#fff;">${name}</div>   <!-- now white -->
+</td>
+
+    <td>
+  <a href="customise1.html?game=${encodeURIComponent(
+        name.toLowerCase().replace(/\s+/g, '')
+      )}"
+     class="btn-customise"
+     title="Customise"></a>
+</td>
+
+      <td class="text-end">
+        <button class="btn btn-link text-danger trash p-0">
+          <i class="fa fa-trash"></i>
+        </button>
+      </td>`;
+    tr.querySelector(".trash").onclick = () => {
+      setCart(cart.filter(n => n !== name));
+      renderCart();
+    };
+    body.appendChild(tr);
+  });
+
+  btn.disabled = false;
+}
+
+      // ─── Enable Button Only When Form Valid ────────────────────────────────
+      const form = document.getElementById("delivery-form"),
+            submitBtn = document.getElementById("checkout-btn"),
+            requireds = Array.from(form.querySelectorAll("input[required]"));
+      requireds.forEach(i=>
+        i.addEventListener("input",()=>
+          submitBtn.disabled = !requireds.every(x=>x.value.trim()!=="")
+        )
+      );
+
+      function getCart() { 
+  try { return JSON.parse(localStorage.getItem("tg_cart"))||[]; } 
+  catch { return []; } 
+}
+function setCart(c) { 
+  localStorage.setItem("tg_cart", JSON.stringify(c)); 
+  updateBadge(); 
+}
+function updateBadge() { 
+  const b = document.getElementById("cart-count"), n = getCart().length;
+  if (!b) return;
+  b.textContent = n;
+  b.style.display = n>0 ? "inline-block" : "none";
+}
+
+      // ─── Toast Helper ───────────────────────────────────────────────────────
+      function showToast(msg, err=false){
+        const t = document.createElement("div");
+        t.className = `toast align-items-center text-white ${err?"bg-danger":"bg-success"} border-0`;
+        t.role = "alert";
+        t.innerHTML = `
+          <div class="d-flex">
+            <div class="toast-body">${msg}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>`;
+        document.getElementById("toast-container").appendChild(t);
+        new bootstrap.Toast(t,{delay:3000}).show();
+        t.addEventListener("hidden.bs.toast",()=>t.remove());
+      }
+
+      // ─── Handle Form Submission ─────────────────────────────────────────────
+      form.addEventListener("submit", async e=>{
+        e.preventDefault();
+        if(!form.checkValidity()){
+          form.reportValidity();
+          return;
+        }
+
+        const cart = getCart();
+        if(!cart.length){
+          showToast("Your cart is empty", true);
+          return;
+        }
+
+        // Compute totals
+        const subtotal = cart.reduce((s,name)=>{
+          const p = PRODUCTS[name]||{price:0};
+          return s + p.price;
+        }, 0);
+        const gst   = +(subtotal*0.002).toFixed(2);
+        const total = subtotal + gst;
+
+        // Populate hidden fields
+        document.getElementById("cart_json").value   = JSON.stringify(cart);
+        document.getElementById("totals_json").value = JSON.stringify({subtotal,gst,total});
+
+        // POST to PHP
+        try {
+          const res = await fetch("http://localhost/tgWebsite/insertData.php", {
+            method: "POST",
+            body: new FormData(form)
+          });
+          const payload = await res.json();
+          if(!res.ok || !payload.success){
+            throw new Error(payload.error || res.statusText);
+          }
+          showToast("✅ Request submitted!");
+          setCart([]);
+          renderCart();
+          form.reset();
+          submitBtn.disabled = true;
+        } catch(err) {
+          showToast("❌ "+err.message, true);
+          console.error(err);
+        }
+      });
+    </script>
+  </body>
+</html>
+</html>
